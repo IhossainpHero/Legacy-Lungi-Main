@@ -26,9 +26,10 @@ export default function RelatedProducts({ products }) {
                 {product.name}
               </h3>
 
-              <p className="text-yellow-600 font-bold">
-                {" "}
-                <TbCurrencyTaka size={20} /> {product.price}
+              {/* Price with Taka icon */}
+              <p className="text-yellow-600 font-bold flex items-center justify-center">
+                <TbCurrencyTaka size={20} />
+                {product?.newPrice}
               </p>
 
               {/* Button */}

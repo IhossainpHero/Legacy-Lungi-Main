@@ -10,8 +10,9 @@ export default function ProductDetails({ product }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Set default selected size when product loads
   useEffect(() => {
     if (product?.sizes?.length > 0) {
       setSelectedSize(product.sizes[0]);
@@ -44,15 +45,35 @@ export default function ProductDetails({ product }) {
 
   if (!product) return <Spinner />;
 
+  // ✅ নতুন ফাংশন: জুম এবং ঘূর্ণন দুটোই নিয়ন্ত্রণ করবে
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } =
+      e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setMousePosition({ x, y });
+  };
+
+  const toggleZoom = () => {
+    setIsZoomed(!isZoomed);
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-6 lg:px-8 py-10 grid md:grid-cols-2 gap-8">
       {/* Product Images */}
       <div>
-        <div className="border">
+        <div className="relative border overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-[500px] object-contain"
+            onClick={toggleZoom}
+            onMouseMove={handleMouseMove}
+            style={{
+              transformOrigin: `${mousePosition.x}% ${mousePosition.y}%`,
+            }}
+            className={`w-full h-[500px] object-contain cursor-zoom-in transition-all duration-300 ${
+              isZoomed ? "scale-[2.5] rotate-3" : "scale-100 rotate-0"
+            }`}
           />
         </div>
       </div>
