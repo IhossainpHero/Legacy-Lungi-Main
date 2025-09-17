@@ -39,7 +39,8 @@ export default function AllProductsPage() {
 
   return (
     <div className="py-24 md:py-10 px-6 min-h-[70vh] max-w-6xl mx-auto">
-      <div className="flex flex-col md:flex-row md:justify-between gap-4 mb-6">
+      {/* এই div-টি এখন ফিক্সড করা হয়েছে */}
+      <div className="flex flex-col md:flex-row md:justify-between gap-4 mb-6 sticky top-0 bg-white z-50 p-4 shadow-md">
         <input
           type="text"
           placeholder="Search products..."
@@ -64,7 +65,7 @@ export default function AllProductsPage() {
       ) : filteredProducts.length === 0 ? (
         <p className="text-center text-gray-500">No products found.</p>
       ) : (
-        <div className="grid grid-320 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-320 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-24">
           {filteredProducts.map((item) => (
             <ProductCard key={item._id} product={item} />
           ))}

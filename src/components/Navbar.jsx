@@ -1,9 +1,9 @@
 "use client";
-
 import { useCart } from "@/app/context/CartContext";
-import { Home, Search, ShoppingBag, ShoppingCart, User } from "lucide-react";
+import { Home, ShoppingBag, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -102,9 +102,15 @@ export default function Navbar() {
           <span>legacy</span>
           <span>lungi</span>
         </div>
-        <div className="flex items-center space-x-2 cursor-pointer">
-          <Search size={24} />
-        </div>
+        <a
+          href="https://wa.me/8801300543199"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-2 cursor-pointer 
+             transition-transform duration-300 hover:scale-110 hover:text-green-500"
+        >
+          <FaWhatsapp size={24} />
+        </a>
       </div>
 
       {/* Mobile Bottom Navbar */}

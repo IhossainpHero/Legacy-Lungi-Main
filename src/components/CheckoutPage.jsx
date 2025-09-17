@@ -264,7 +264,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={loading || (!productId && cartItems?.length === 0)}
-                className="bg-yellow-500 text-white py-3 rounded-md font-semibold hover:bg-yellow-600 transition"
+                className="bg-gray-500 text-white py-3 rounded-md font-semibold hover:bg-[#063238]  transition"
               >
                 {loading ? "Processing..." : `Order Now ৳ ${totalPrice}`}
               </button>

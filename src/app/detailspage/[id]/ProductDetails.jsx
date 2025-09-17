@@ -79,7 +79,7 @@ export default function ProductDetails({ product }) {
                 onClick={() => setSelectedSize(size)}
                 className={`px-4 py-2 border rounded ${
                   selectedSize === size
-                    ? "bg-yellow-400 text-white"
+                    ? "bg-gray-700 text-white"
                     : "bg-white text-black"
                 }`}
               >
@@ -102,7 +102,10 @@ export default function ProductDetails({ product }) {
         <div className="flex gap-4 mb-6">
           <button
             onClick={handleAddToCart}
-            className="bg-yellow-400 px-6 py-2 rounded"
+            className="bg-[#063238] text-white px-6 py-2 rounded
+             transition-all duration-300 ease-in-out
+             hover:bg-white hover:text-[#063238] hover:border hover:border-[#063238]
+             active:scale-95"
           >
             Add to cart
           </button>

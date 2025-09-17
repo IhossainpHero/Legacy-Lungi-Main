@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useCart } from "../context/CartContext";
+import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 
 export default function CartPage() {
   const { cartItems, updateQuantity, updateSize, removeFromCart } = useCart();
   const [shipping, setShipping] = useState(70);
   const router = useRouter();
 
-
-console.log("Cart Items:", cartItems);
+  console.log("Cart Items:", cartItems);
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.newPrice * item.quantity,
     0
@@ -79,7 +78,7 @@ console.log("Cart Items:", cartItems);
                   onClick={() => updateSize(item._id, size)}
                   className={`px-3 py-1 border rounded ${
                     item.selectedSize === size
-                      ? "bg-yellow-400 text-white"
+                      ? "bg-gray-700 text-white"
                       : "bg-white text-black"
                   }`}
                 >
@@ -131,7 +130,7 @@ console.log("Cart Items:", cartItems);
             placeholder="Coupon code"
             className="border px-3 py-2 w-full md:w-3/5 rounded"
           />
-          <button className="w-full md:w-2/5 bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded">
+          <button className="w-full md:w-2/5 bg-gray-400 hover:bg-[#063238]  text-white px-4 py-2 rounded">
             Apply coupon
           </button>
         </div>
@@ -174,7 +173,7 @@ console.log("Cart Items:", cartItems);
 
         <button
           onClick={handleProceedToCheckout}
-          className="bg-yellow-400 hover:bg-yellow-500 text-white w-full py-2 rounded"
+          className="bg-gray-700 hover:bg-[#063238]  text-white w-full py-2 rounded"
         >
           Proceed to checkout
         </button>

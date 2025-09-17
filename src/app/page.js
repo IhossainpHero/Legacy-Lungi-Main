@@ -2,6 +2,7 @@
 
 import Spinner from "@/components/Spinner";
 // import { fetchProducts } from "@/redux/productSlice";
+import Hero from "@/components/Hero";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/productSlice";
@@ -32,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="pt-14 md:pt-0 pb-20 md:pb-0">
-      {/* <Hero />  */}
+      <Hero />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 mb-10">
         {loading ? (
           <Spinner />
